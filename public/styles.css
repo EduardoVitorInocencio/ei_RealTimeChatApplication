@@ -1,41 +1,134 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f2f2f2;
+:root {
+  --primary-color: #7c3aed; /* Roxo */
+  --secondary-color: #f4f4f5; /* Branco suave */
+  --text-color: #1f1f1f;
+  --bg-color: #ffffff;
+  --bubble-color: #ede9fe;
+  --admin-color: #d946ef;
 }
 
-#join-container,
-#chat-container {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: var(--secondary-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  width: 100%;
   max-width: 600px;
-  margin: 2rem auto;
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-color);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+  padding: 2rem;
+  transition: all 0.3s ease;
 }
 
 .hidden {
   display: none;
 }
 
+h2 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #6d28d9;
+}
+
+#room-name {
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 #messages {
   height: 300px;
   overflow-y: auto;
-  border: 1px solid #ddd;
   padding: 1rem;
+  background-color: var(--bubble-color);
+  border-radius: 12px;
   margin-bottom: 1rem;
+  border: 1px solid #ddd;
+}
+
+.message {
+  margin-bottom: 0.8rem;
+}
+
+.message .name {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.message .admin {
+  color: var(--admin-color);
+}
+
+.message .text {
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+}
+
+.message .time {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 0.2rem;
 }
 
 #message-form {
   display: flex;
+  gap: 0.5rem;
 }
 
 #message-input {
   flex: 1;
-  padding: 0.5rem;
+  padding: 0.8rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
 }
 
-#message-form button {
-  padding: 0.5rem 1rem;
+@media (max-width: 600px) {
+  .container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  #messages {
+    height: 250px;
+  }
 }
