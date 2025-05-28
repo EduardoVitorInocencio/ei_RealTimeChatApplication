@@ -1,36 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real Time Chat</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat em Tempo Real</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"
+      integrity="sha512-Xm9qbB6Pu06k3PUwPj785dyTl6oHxgsv9nHp7ej7nCpAqGZT3OZpsELuCYX05DdonFpTlBpXMOxjavIAIUwr0w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script defer src="app.js"></script>
+  </head>
 
-    <div id = "join-container">
-        <h2>Entrar na Sala</h2>
-        <input type="text" id="name-input" placeholder="Seu nome" />
-        <input type="text" id="room-input" placeholder="Nome da sala" />
-        <button id="join-btn">Entrar</button>
-    </div>
-    
-    <div id="chat-container" class="hidden">
-        <div id="room-name"></div>
-        <div id="messages"></div>
-        <form id="message-form">
-            <input type="text" id="message-input" placeholder="Digite sua mensagem"/>
-            <button type="submit">Enviar</button>
+  <body>
+    <div class="container">
+      <header>
+        <form class="form-join">
+          <input
+            type="text"
+            id="name"
+            maxlength="12"
+            placeholder="Seu nome"
+            required
+          />
+          <select id="room">
+            <option value="" disabled selected>Sala</option>
+            <option value="Tech">Tech</option>
+            <option value="Dev">Dev</option>
+            <option value="AI">AI</option>
+          </select>
+          <button id="join" type="submit">Entrar</button>
         </form>
-    </div>
+      </header>
 
-     <!-- Socket.IO Client (CDN) -->
-  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-  <!-- Script JS -->
-  <script src="app.js"></script>
-  
-</body>
-</html>
-    
-</body>
+      <div class="app">
+        <ul class="chat-display"></ul>
+      </div>
+
+      <div class="info">
+        <p class="user-list"></p>
+        <p class="room-list"></p>
+        <p class="activity"></p>
+      </div>
+
+      <div class="send">
+        <form class="form-msg">
+          <input
+            type="text"
+            id="message"
+            placeholder="Digite sua mensagem..."
+            required
+          />
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
